@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NotAA</title>
+  <link rel="icon" type="image/x-icon" href="icon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <script src="config.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div id="age-popup">
+    <div class="popup-content">
+      <h2>Are you 18 or older?</h2>
+      <div class="popup-buttons">
+        <button id="yes-button">Yes</button>
+        <button id="no-button">No</button>
+      </div>
+      <label>
+        <input type="checkbox" id="remember-checkbox"> Remember this
+      </label>
+    </div>
+  </div>
+
+  <div id="container" style="display:none;">
+    <div id="header">
+      <img src="header.webp" alt="Header Image">
+      <a href="https://play.notaa.dev" class="play_button" target="_blank">Play</a>
+    </div>
+
+    <!-- Social Media Icons Section -->
+    <div id="social-icons"></div>
+    
+    <!-- Gallery Section -->
+    <div id="gallery-container">
+      <div id="gallery"></div>
+      <div id="gallery-thumbnails"></div>
+    </div>
+
+    <!-- Download Links Section -->
+    <div id="download-links">
+      <h2>Downloads</h2>
+      <ul></ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <a href="/tos/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/license/">Copyright 2024</a>
+    </footer>
+  </div>
+</body>
+</html>

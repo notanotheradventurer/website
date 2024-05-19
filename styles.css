@@ -1,0 +1,440 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  background-color: #27272a; /* Dark background color */
+  margin: 0 auto; /* Center the body content */
+  padding-top: 20px;
+  color: #ffffff; /* White text color */
+  width: 60%;
+  max-width: 800px; /* Set a maximum width */
+}
+
+body.light-mode {
+  background-color: #ffffff; /* Light background color */
+  color: #27272a; /* Dark text color */
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #27272a;
+  margin-bottom: 20px;
+}
+
+body.light-mode #container {
+  background-color: #ffffff;
+}
+
+h1, h2, p, ul, a {
+  color: #ffffff; /* White text */
+}
+
+body.light-mode h1, body.light-mode h2, body-light-mode p, body-light-mode ul, body-light-mode a {
+  color: #27272a; /* Dark text */
+}
+
+#header {
+  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body.light-mode #header {
+  border-bottom: 1px solid #27272a;
+}
+
+#header img {
+  width: 90%; /* Adjusted to 90% of the container width */
+  height: auto;
+}
+
+body.light-mode #header img {
+  filter: invert(1);
+}
+
+.play_button {
+  font-size: 1.2rem;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+body.light-mode .play_button {
+  color: #27272a;
+  border: 2px solid #27272a;
+}
+
+.play_button:hover {
+  background-color: #52525b; /* Hover color */
+}
+
+body.light-mode .play_button:hover {
+  background-color: #d4d4d4;
+}
+
+/* Social Media Icons Section */
+#social-icons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#social-icons a {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+#social-icons a img {
+  height: 60px; /* Set a uniform height for all icons */
+  width: auto; /* Maintain aspect ratio */
+  transition: transform 0.3s;
+  filter: invert(0); /* Ensure icons are not inverted by default */
+}
+
+body.light-mode #social-icons a img {
+  filter: invert(1); /* Invert icons in light mode */
+}
+
+#social-icons a img:hover {
+  transform: scale(1.25); /* Transform scale increased to 1.25 */
+}
+
+/* Gallery Section */
+#gallery-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+#gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+}
+
+#gallery::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.gallery-image {
+  scroll-snap-align: start;
+  width: 100%;
+  height: auto;
+  flex: 1; /* Ensure images take up the full width */
+  object-fit: contain; /* Maintain aspect ratio */
+}
+
+#gallery-thumbnails {
+  display: flex;
+  justify-content: space-between; /* Ensure thumbnails take full width */
+  width: 100%;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  flex: 1; /* Make each thumbnail take an equal share of the available space */
+  max-width: 22%; /* Ensure they don't get too wide */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.thumbnail:hover {
+  transform: scale(1.25); /* Transform scale increased to 1.25 */
+}
+
+/* Download Links Section */
+#download-links {
+  margin: 20px auto;
+  width: 100%;
+  text-align: center;
+}
+
+#download-links h2 {
+  margin: 0;
+  font-weight: bold;
+  padding-bottom: 10px; /* Add padding below the heading */
+}
+
+#download-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.download-item {
+  display: flex;
+  flex-direction: column; /* Ensure checksum is below the button */
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  background-color: #444;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+body.light-mode .download-item {
+  background-color: #d4d4d4;
+}
+
+.download-item:hover {
+  background-color: #52525b; /* Hover color */
+}
+
+body.light-mode .download-item:hover {
+  background-color: #b3b3b3;
+}
+
+.download-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  text-decoration: none;
+  color: inherit;
+}
+
+body.light-mode .download-item a {
+  color: #27272a;
+}
+
+.download-icon {
+  width: 25px;
+  height: auto;
+}
+
+.os-text {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 0 10px;
+}
+
+.checksum-text {
+  font-size: 0.8rem; /* Smaller text for checksums */
+  color: #cccccc; /* Light grey color for checksums */
+  margin-top: 5px;
+}
+
+body.light-mode .checksum-text {
+  color: #737373;
+}
+
+/* Footer style */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px; /* Adjust the margin to ensure even spacing */
+  padding-top: 10px; /* Add padding to the top of the footer */
+  border-top: 1px solid #ffffff;
+  width: 100%;
+  text-align: center; /* Ensure the text is centered */
+  max-width: 800px; /* Ensure the footer doesn't exceed max width */
+}
+
+body.light-mode footer {
+  border-top: 1px solid #27272a;
+}
+
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px;
+  white-space: nowrap; /* Prevent links from breaking */
+  font-size: 0.9rem; /* Adjust font size for smaller screens */
+}
+
+body.light-mode footer a {
+  color: #27272a;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Age Verification Popup */
+#age-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 60%;
+  max-width: 500px;
+}
+
+body.light-mode .popup-content {
+  background-color: #d4d4d4;
+}
+
+.popup-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.popup-buttons button {
+  background-color: #444;
+  color: #fff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 45%; /* Adjusted to fit two buttons evenly */
+}
+
+body.light-mode .popup-buttons button {
+  background-color: #b3b3b3;
+  color: #27272a;
+  border: 2px solid #27272a;
+}
+
+.popup-buttons button:hover {
+  background-color: #52525b;
+}
+
+body.light-mode .popup-buttons button:hover {
+  background-color: #737373;
+}
+
+#remember-checkbox {
+  margin-right: 10px;
+}
+
+body.light-mode #remember-checkbox {
+  color: #27272a;
+}
+
+/* Toggle switch */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 600px) {
+  body {
+    width: 90%;
+  }
+
+  #header img {
+    width: 90%; /* Adjusted for smaller screens */
+  }
+
+  .play_button {
+    font-size: 1rem;
+    padding: 5px 8px;
+  }
+
+  .thumbnail {
+    width: 20%; /* Adjusted to take up more space on smaller screens */
+  }
+
+  .download-item {
+    max-width: 250px;
+    padding: 8px;
+  }
+
+  .os-text {
+    font-size: 1rem;
+    margin-left: 5px;
+  }
+
+  .popup-content {
+    width: 80%;
+  }
+
+  .popup-buttons button {
+    width: 45%; /* Adjusted for smaller screens */
+  }
+
+  footer a {
+    font-size: 0.8rem; /* Adjust font size for smaller screens */
+  }
+}
