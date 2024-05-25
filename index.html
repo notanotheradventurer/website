@@ -16,11 +16,11 @@
   <meta name="twitter:title" content="Play Online!">
   <meta name="twitter:description" content="Explore our interactive greeting and play online!">
   <meta name="twitter:image" content="https://notaa.dev/web_preview.png">
-  <link rel="icon" type="image/x-icon" href="icon.ico">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="/icon.ico">
+  <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-  <script src="config.js" defer></script>
-  <script src="main.js" defer></script>
+  <script src="/config.js" defer></script>
+  <script src="/main.js" defer></script>
 </head>
 <body>
   <div id="age-popup">
@@ -37,11 +37,10 @@
   </div>
 
   <div id="container" style="display:none;">
-    <div id="header">
-      <img src="header.webp" alt="Header Image">
+    <div id="header" style="max-width: 100%; height: auto; justify-content: center;">
+      <img src="/header.webp" alt="Header Image">
       <a href="https://play.notaa.dev" class="play_button" target="_blank">Play</a>
     </div>
-
     <!-- Social Media Icons Section -->
     <div id="social-icons"></div>
     
@@ -53,19 +52,33 @@
 
     <!-- Download Links Section -->
     <div id="download-links">
-      <h2>Downloads</h2>
+      <h2 class="download-header">Downloads</h2>
       <ul></ul>
     </div>
 
     <!-- Footer -->
     <footer>
-      <a href="/tos/">Terms of Service</a>
-      <a href="/privacy/">Privacy Policy</a>
-      <a href="/license/">Copyright 2024</a>
+      <a href="/tos/index.html">Terms of Service</a>
+      <a href="/privacy/index.html">Privacy Policy</a>
+      <a href="/license/index.html">Copyright 2024</a>
     </footer>
+
+    <!-- Toggle Switch Container -->
+    <div class="toggle-container">
+      <img id="toggle-icon" src="/icons/toggle.webp" data-light="/icons/toggle_l.webp" alt="Toggle Mode Icon">
+      <label class="switch">
+        <input type="checkbox" onclick="toggleMode()">
+        <span class="slider round"></span>
+      </label>
+    </div>
   </div>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      detectTheme();
+      checkAge();
+    });
+
     function checkAge() {
       const ageVerified = localStorage.getItem('ageVerified');
       if (ageVerified === 'true') {
@@ -94,10 +107,8 @@
 
     document.getElementById('yes-button').addEventListener('click', setAgeVerified);
     document.getElementById('no-button').addEventListener('click', function() {
-      window.location.href = 'https://www.childnetsafety.com';
+      window.location.href = 'https://www.cisa.gov/news-events/news/keeping-children-safe-online';
     });
-
-    window.onload = checkAge;
   </script>
 </body>
 </html>

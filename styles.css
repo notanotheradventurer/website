@@ -1,17 +1,22 @@
+/* Other styles remain unchanged */
+
 body {
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  background-color: #27272a; /* Dark background color */
   margin: 0 auto; /* Center the body content */
   padding-top: 20px;
-  color: #ffffff; /* White text color */
   width: 60%;
   max-width: 800px; /* Set a maximum width */
 }
 
+body.dark-mode {
+  background-color: #27272a; /* Dark background color */
+  color: #f0f0f0; /* White text color */
+}
+
 body.light-mode {
-  background-color: #ffffff; /* Light background color */
-  color: #27272a; /* Dark text color */
+  background-color: #f0f0f0; /* Light gray background color */
+  color: #232325; /* Dark gray text color */
 }
 
 #container {
@@ -19,74 +24,81 @@ body.light-mode {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-color: #27272a;
   margin-bottom: 20px;
 }
 
+body.dark-mode #container {
+  background-color: #27272a;
+}
+
 body.light-mode #container {
-  background-color: #ffffff;
+  background-color: #f0f0f0;
 }
 
-h1, h2, p, ul, a {
-  color: #ffffff; /* White text */
-}
-
-body.light-mode h1, body.light-mode h2, body-light-mode p, body-light-mode ul, body-light-mode a {
-  color: #27272a; /* Dark text */
+h1, h2, p, ul, a, h2.download-header {
+  color: inherit;
 }
 
 #header {
   width: 100%;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid #f0f0f0; /* Default border color for dark mode */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Ensure elements are spaced apart */
   align-items: center;
 }
 
 body.light-mode #header {
-  border-bottom: 1px solid #27272a;
+  border-bottom: 1px solid #232325; /* Light mode border color */
 }
 
 #header img {
-  width: 90%; /* Adjusted to 90% of the container width */
+  width: 80%; /* Adjusted to 85% of the container width */
   height: auto;
 }
 
 body.light-mode #header img {
-  filter: invert(1);
+  content: url('/header_l.webp'); /* Load light mode image */
 }
 
 .play_button {
   font-size: 1.2rem;
-  color: #ffffff;
   text-decoration: none;
   padding: 5px 10px;
-  border: 2px solid #ffffff;
+  border: 2px solid;
   border-radius: 5px;
   transition: background-color 0.3s;
+  width: 10%; /* Ensure the button takes up 10% of the width */
+  min-width: 40px; /* Ensure a minimum width for the button */
+  margin-left: auto; /* Ensure a space between the header image and the play button */
+}
+
+body.dark-mode .play_button {
+  color: #f0f0f0;
+  border-color: #f0f0f0;
 }
 
 body.light-mode .play_button {
-  color: #27272a;
-  border: 2px solid #27272a;
+  color: #232325;
+  border-color: #232325;
 }
 
 .play_button:hover {
-  background-color: #52525b; /* Hover color */
+  background-color: #444; /* Darkened hover color */
 }
 
 body.light-mode .play_button:hover {
-  background-color: #d4d4d4;
+  background-color: #b3b3b3;
 }
+
 
 /* Social Media Icons Section */
 #social-icons {
   display: flex;
   justify-content: space-around;
-  width: 100%;
-  margin-bottom: 20px;
+  width: 90%;
+  margin: 0 auto 20px auto; /* Center the container horizontally */
 }
 
 #social-icons a {
@@ -99,21 +111,22 @@ body.light-mode .play_button:hover {
   height: 60px; /* Set a uniform height for all icons */
   width: auto; /* Maintain aspect ratio */
   transition: transform 0.3s;
-  filter: invert(0); /* Ensure icons are not inverted by default */
 }
 
 body.light-mode #social-icons a img {
-  filter: invert(1); /* Invert icons in light mode */
+  content: attr(data-light); /* Load light mode image */
 }
 
 #social-icons a img:hover {
   transform: scale(1.25); /* Transform scale increased to 1.25 */
 }
 
-/* Gallery Section */
+/* Adjusted Gallery Container and Images */
 #gallery-container {
+  padding-bottom: 10px;
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 #gallery {
@@ -122,6 +135,7 @@ body.light-mode #social-icons a img {
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Hide scrollbar for Firefox */
   -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+  padding-bottom: 20px; /* Added padding to prevent clipping */
 }
 
 #gallery::-webkit-scrollbar {
@@ -132,15 +146,21 @@ body.light-mode #social-icons a img {
   scroll-snap-align: start;
   width: 100%;
   height: auto;
-  flex: 1; /* Ensure images take up the full width */
+  flex: 1;
   object-fit: contain; /* Maintain aspect ratio */
+  max-height: 80vh; /* Ensuring it fits within viewport height */
 }
 
+/* Adjusted Gallery Thumbnails */
 #gallery-thumbnails {
   display: flex;
   justify-content: space-between; /* Ensure thumbnails take full width */
-  width: 100%;
+  width: 95%; /* Set thumbnails to 95% of container width */
+  margin: 0 auto; /* Center the thumbnails */
   margin-top: 10px;
+  position: relative;
+  z-index: 2; /* Ensure thumbnails are on top */
+  overflow: visible; /* Ensure overflow is visible */
 }
 
 .thumbnail {
@@ -151,8 +171,10 @@ body.light-mode #social-icons a img {
   transition: transform 0.3s;
 }
 
-.thumbnail:hover {
+.thumbnail:hover,
+.thumbnail:active {
   transform: scale(1.25); /* Transform scale increased to 1.25 */
+  z-index: 3; /* Ensure hovered thumbnails are on top */
 }
 
 /* Download Links Section */
@@ -184,7 +206,6 @@ body.light-mode #social-icons a img {
   align-items: center;
   width: 100%;
   max-width: 300px;
-  background-color: #444;
   padding-top: 15px;
   padding-bottom: 5px;
   border-radius: 25px;
@@ -192,8 +213,14 @@ body.light-mode #social-icons a img {
   transition: background-color 0.3s;
 }
 
+body.dark-mode .download-item {
+  background-color: #444;
+  color: #f0f0f0;
+}
+
 body.light-mode .download-item {
   background-color: #d4d4d4;
+  color: #232325;
 }
 
 .download-item:hover {
@@ -213,10 +240,6 @@ body.light-mode .download-item:hover {
   color: inherit;
 }
 
-body.light-mode .download-item a {
-  color: #27272a;
-}
-
 .download-icon {
   width: 25px;
   height: auto;
@@ -231,8 +254,10 @@ body.light-mode .download-item a {
 
 .checksum-text {
   font-size: 0.8rem; /* Smaller text for checksums */
+}
+
+body.dark-mode .checksum-text {
   color: #cccccc; /* Light grey color for checksums */
-  margin-top: 5px;
 }
 
 body.light-mode .checksum-text {
@@ -247,26 +272,26 @@ footer {
   flex-wrap: wrap;
   margin-top: 20px; /* Adjust the margin to ensure even spacing */
   padding-top: 10px; /* Add padding to the top of the footer */
-  border-top: 1px solid #ffffff;
   width: 100%;
   text-align: center; /* Ensure the text is centered */
   max-width: 800px; /* Ensure the footer doesn't exceed max width */
 }
 
+body.dark-mode footer {
+  border-top: 1px solid #f0f0f0;
+  color: #f0f0f0;
+}
+
 body.light-mode footer {
-  border-top: 1px solid #27272a;
+  border-top: 1px solid #232325;
+  color: #232325;
 }
 
 footer a {
-  color: #ffffff;
   text-decoration: none;
   margin: 0 10px;
   white-space: nowrap; /* Prevent links from breaking */
   font-size: 0.9rem; /* Adjust font size for smaller screens */
-}
-
-body.light-mode footer a {
-  color: #27272a;
 }
 
 footer a:hover {
@@ -288,7 +313,6 @@ footer a:hover {
 }
 
 .popup-content {
-  background-color: #333;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -296,8 +320,14 @@ footer a:hover {
   max-width: 500px;
 }
 
+body.dark-mode .popup-content {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
 body.light-mode .popup-content {
   background-color: #d4d4d4;
+  color: #232325;
 }
 
 .popup-content h2 {
@@ -312,9 +342,7 @@ body.light-mode .popup-content {
 }
 
 .popup-buttons button {
-  background-color: #444;
-  color: #fff;
-  border: 2px solid #ffffff;
+  border: 2px solid;
   border-radius: 5px;
   padding: 10px 20px;
   font-size: 1rem;
@@ -323,10 +351,16 @@ body.light-mode .popup-content {
   width: 45%; /* Adjusted to fit two buttons evenly */
 }
 
+body.dark-mode .popup-buttons button {
+  background-color: #444;
+  color: #fff;
+  border-color: #f0f0f0;
+}
+
 body.light-mode .popup-buttons button {
   background-color: #b3b3b3;
-  color: #27272a;
-  border: 2px solid #27272a;
+  color: #232325;
+  border-color: #232325;
 }
 
 .popup-buttons button:hover {
@@ -341,31 +375,45 @@ body.light-mode .popup-buttons button:hover {
   margin-right: 10px;
 }
 
-body.light-mode #remember-checkbox {
-  color: #27272a;
-}
-
-/* Toggle switch */
+/* Toggle switch container */
 .toggle-container {
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Center at the bottom of the content */
+  width: fit-content;
 }
 
-.switch {
+body.dark-mode .toggle-container {
+  background-color: #444;
+}
+
+body.light-mode .toggle-container {
+  background-color: #d4d4d4;
+}
+
+.toggle-container img {
+  height: 34px;
+  margin-right: 10px;
+}
+
+.toggle-container .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 }
 
-.switch input {
+.toggle-container .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.slider {
+.toggle-container .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -377,7 +425,11 @@ body.light-mode #remember-checkbox {
   border-radius: 34px;
 }
 
-.slider:before {
+body.light-mode .toggle-container .slider {
+  background-color: #2b2e4a; /* Light mode background color */
+}
+
+.toggle-container .slider:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -389,11 +441,11 @@ body.light-mode #remember-checkbox {
   border-radius: 50%;
 }
 
-input:checked + .slider {
+.toggle-container input:checked + .slider {
   background-color: #2196F3;
 }
 
-input:checked + .slider:before {
+.toggle-container input:checked + .slider:before {
   transform: translateX(26px);
 }
 
