@@ -51,28 +51,30 @@ function createGallery(galleryImages) {
   const galleryContainer = document.getElementById('gallery');
   const thumbnailsContainer = document.getElementById('gallery-thumbnails');
 
-  galleryImages.forEach((image, index) => {
-    const img = document.createElement('img');
-    img.src = image;
-    img.alt = `Gallery Image ${index + 1}`;
-    img.className = 'gallery-image';
-    galleryContainer.appendChild(img);
+  if (galleryContainer && thumbnailsContainer && !galleryContainer.hasChildNodes() && !thumbnailsContainer.hasChildNodes()) {
+    galleryImages.forEach((image, index) => {
+      const img = document.createElement('img');
+      img.src = image;
+      img.alt = `Gallery Image ${index + 1}`;
+      img.className = 'gallery-image';
+      galleryContainer.appendChild(img);
 
-    const thumbnail = document.createElement('img');
-    thumbnail.src = image;
-    thumbnail.alt = `Gallery Thumbnail ${index + 1}`;
-    thumbnail.className = 'thumbnail';
-    thumbnail.onclick = () => scrollToImage(index);
-    thumbnailsContainer.appendChild(thumbnail);
-  });
+      const thumbnail = document.createElement('img');
+      thumbnail.src = image;
+      thumbnail.alt = `Gallery Thumbnail ${index + 1}`;
+      thumbnail.className = 'thumbnail';
+      thumbnail.onclick = () => scrollToImage(index);
+      thumbnailsContainer.appendChild(thumbnail);
+    });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') {
-      scrollToNextImage();
-    } else if (e.key === 'ArrowLeft') {
-      scrollToPreviousImage();
-    }
-  });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        scrollToNextImage();
+      } else if (e.key === 'ArrowLeft') {
+        scrollToPreviousImage();
+      }
+    });
+  }
 }
 
 function scrollToImage(index) {
@@ -118,19 +120,21 @@ function scrollToPreviousImage() {
 function createSocialLinks(socialLinks) {
   const socialIconsContainer = document.getElementById('social-icons');
 
-  socialLinks.forEach(link => {
-    if (link.visible) {
-      const a = document.createElement('a');
-      a.href = link.url;
-      a.target = '_blank';
-      const img = document.createElement('img');
-      img.src = link.icon;
-      img.setAttribute('data-light', link.icon.replace('.webp', '_l.webp')); // Assuming light mode icons follow this naming convention
-      img.alt = link.name;
-      a.appendChild(img);
-      socialIconsContainer.appendChild(a);
-    }
-  });
+  if (socialIconsContainer && !socialIconsContainer.hasChildNodes()) {
+    socialLinks.forEach(link => {
+      if (link.visible) {
+        const a = document.createElement('a');
+        a.href = link.url;
+        a.target = '_blank';
+        const img = document.createElement('img');
+        img.src = link.icon;
+        img.setAttribute('data-light', link.icon.replace('.webp', '_l.webp')); // Assuming light mode icons follow this naming convention
+        img.alt = link.name;
+        a.appendChild(img);
+        socialIconsContainer.appendChild(a);
+      }
+    });
+  }
 }
 
 function switchIconsToLightMode() {
@@ -150,32 +154,34 @@ function switchIconsToDarkMode() {
 function createDownloadLinks(downloads) {
   const downloadLinksContainer = document.getElementById('download-links').querySelector('ul');
 
-  downloads.forEach(download => {
-    if (download.visible) {
-      const li = document.createElement('li');
-      li.className = 'download-item';
-      
-      const a = document.createElement('a');
-      a.href = download.url;
-      a.target = '_blank';
-      a.innerHTML = `
-        <img src="icons/${download.os.toLowerCase()}.webp" alt="${download.os} Download" class="download-icon" data-light="icons/${download.os.toLowerCase()}_l.webp">
-        <span class="os-text">${download.os}</span>
-        <img src="icons/download.webp" alt="Download Icon" class="download-icon" data-light="icons/download_l.webp">
-      `;
-      li.appendChild(a);
+  if (downloadLinksContainer && !downloadLinksContainer.hasChildNodes()) {
+    downloads.forEach(download => {
+      if (download.visible) {
+        const li = document.createElement('li');
+        li.className = 'download-item';
 
-      const p = document.createElement('p');
-      p.className = 'checksum-text';
-      p.textContent = `MD5: `;
-      const span = document.createElement('span');
-      span.id = `${download.os.toLowerCase()}-checksum`;
-      p.appendChild(span);
-      li.appendChild(p);
+        const a = document.createElement('a');
+        a.href = download.url;
+        a.target = '_blank';
+        a.innerHTML = `
+          <img src="icons/${download.os.toLowerCase()}.webp" alt="${download.os} Download" class="download-icon" data-light="icons/${download.os.toLowerCase()}_l.webp">
+          <span class="os-text">${download.os}</span>
+          <img src="icons/download.webp" alt="Download Icon" class="download-icon" data-light="icons/download_l.webp">
+        `;
+        li.appendChild(a);
 
-      downloadLinksContainer.appendChild(li);
-    }
-  });
+        const p = document.createElement('p');
+        p.className = 'checksum-text';
+        p.textContent = `MD5: `;
+        const span = document.createElement('span');
+        span.id = `${download.os.toLowerCase()}-checksum`;
+        p.appendChild(span);
+        li.appendChild(p);
+
+        downloadLinksContainer.appendChild(li);
+      }
+    });
+  }
 }
 
 function insertChecksums() {
@@ -233,22 +239,41 @@ function setToggleIconPaths() {
   }
 }
 
-function initialize() {
-  setMetadata(config.metadata);
-  createGallery(config.galleryImages);
-  createSocialLinks(config.socialLinks);
-  createDownloadLinks(config.downloads);
-  insertChecksums();
-  setToggleIconPaths();  // Call the function to set the icon paths
-
-  const galleryContainer = document.getElementById('gallery');
-  enableDragScroll(galleryContainer);
+function adjustContainerWidth() {
+  const container = document.querySelector('.container');
+  if (window.innerWidth <= 600) { // Mobile devices
+    container.style.width = '100%';
+    container.style.padding = '0';
+  } else {
+    container.style.width = '100%';
+    container.style.maxWidth = '800px';
+    container.style.padding = '0 20px';
+  }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
   detectTheme();
   initialize();
+  adjustContainerWidth();
 });
+
+window.addEventListener('resize', adjustContainerWidth);
+
+function initialize() {
+  if (document.getElementById('social-icons') && !document.getElementById('social-icons').hasChildNodes()) {
+    createSocialLinks(config.socialLinks);
+  }
+  if (document.getElementById('download-links') && !document.getElementById('download-links').querySelector('ul').hasChildNodes()) {
+    createDownloadLinks(config.downloads);
+  }
+  const galleryContainer = document.getElementById('gallery');
+  if (galleryContainer && !galleryContainer.hasChildNodes()) {
+    createGallery(config.galleryImages);
+    enableDragScroll(galleryContainer);
+  }
+  insertChecksums();
+  setToggleIconPaths();
+}
 
 function toggleMode() {
   const body = document.body;
@@ -353,7 +378,6 @@ function updateTheme() {
   }
 }
 
-
 function setCookie(name, value, days) {
   const d = new Date();
   d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -381,19 +405,3 @@ document.addEventListener('DOMContentLoaded', () => {
   detectTheme();
   initialize();
 });
-
-function initialize() {
-  if (document.getElementById('social-icons') && !document.getElementById('social-icons').hasChildNodes()) {
-    createSocialLinks(config.socialLinks);
-  }
-  if (document.getElementById('download-links') && !document.getElementById('download-links').querySelector('ul').hasChildNodes()) {
-    createDownloadLinks(config.downloads);
-  }
-  const galleryContainer = document.getElementById('gallery');
-  if (galleryContainer && !galleryContainer.hasChildNodes()) {
-    createGallery(config.galleryImages);
-    enableDragScroll(galleryContainer);
-  }
-  insertChecksums();
-  setToggleIconPaths();
-}

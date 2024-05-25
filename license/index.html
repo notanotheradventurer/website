@@ -9,14 +9,16 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             detectTheme();
+            adjustContainerWidth();
         });
+        window.addEventListener('resize', adjustContainerWidth);
     </script>
 </head>
 <body>
-    <div id="header" style="max-width: 100%; height: auto; justify-content: center;">
-        <img src="/header.webp" alt="Header Image">
-    </div>
     <div class="container">
+        <div id="header" style="max-width: 100%; height: auto; justify-content: center;">
+            <img src="/header.webp" alt="Header Image">
+        </div>
         <h1>License Information</h1>
         <h2>MIT License for Code and Dialogue</h2>
         <p>
@@ -52,5 +54,5 @@
           <span class="slider round"></span>
         </label>
     </div>
-</body>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7cbcd38d92f2475ebc25cccec1fe2c3b"}'></script><!-- Cloudflare Pages Analytics --></body>
 </html>
