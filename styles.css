@@ -135,6 +135,7 @@ body.light-mode #social-icons a img {
 
 #gallery {
   display: flex;
+  flex-wrap: nowrap;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Hide scrollbar for Firefox */
@@ -150,7 +151,7 @@ body.light-mode #social-icons a img {
   scroll-snap-align: start;
   width: 100%;
   height: auto;
-  flex: 1;
+  flex: 0 0 auto; /* Ensure images don't wrap */
   object-fit: contain; /* Maintain aspect ratio */
   max-height: 80vh; /* Ensuring it fits within viewport height */
 }
