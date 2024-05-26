@@ -101,10 +101,6 @@ function scrollToImage(index) {
     left: imageWidth * index,
     behavior: 'smooth'
   });
-
-  // Hide overlay when scrolling to a specific image
-  const overlay = document.getElementById('click-overlay');
-  if (overlay) overlay.style.display = 'none';
 }
 
 function scrollToNextImage() {
@@ -136,7 +132,6 @@ function scrollToPreviousImage() {
     });
   }
 }
-
 
 function createSocialLinks(socialLinks) {
   const socialIconsContainer = document.getElementById('social-icons');

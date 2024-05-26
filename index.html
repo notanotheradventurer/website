@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="container" id="container">
-    <div id="header" style="max-width: 98%; height: auto; display: flex; justify-content: center; margin: 0 auto 20px auto; align-items: center;">
+    <div id="header">
       <img src="/header.webp" alt="Header Image">
       <a href="https://play.notaa.dev" class="play_button" target="_blank">Play</a>
     </div>
@@ -90,10 +90,6 @@
         left: imageWidth * index,
         behavior: 'smooth'
       });
-
-      // Hide overlay when scrolling to a specific image
-      const overlay = document.getElementById('click-overlay');
-      if (overlay) overlay.style.display = 'none';
     }
 
     document.getElementById('yes-button').addEventListener('click', setAgeVerified);

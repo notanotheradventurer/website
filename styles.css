@@ -1,5 +1,3 @@
-/* Other styles remain unchanged */
-
 body {
   font-family: 'Roboto', sans-serif;
   text-align: center;
@@ -56,6 +54,7 @@ body.light-mode #header {
 #header img {
   width: 80%; /* Adjusted to 80% of the container width */
   height: auto;
+  max-width: 800px;
 }
 
 body.light-mode #header img {
@@ -69,7 +68,7 @@ body.light-mode #header img {
   border: 2px solid;
   border-radius: 5px;
   transition: background-color 0.3s;
-  width: 10%; /* Ensure the button takes up 10% of the width */
+  width: 15%; /* Ensure the button takes up 15% of the width */
   min-width: 60px; /* Ensure a minimum width for the button */
   max-width: 120px; /* Ensure a maximum width for the button */
   display: flex;
@@ -126,7 +125,6 @@ body.light-mode #social-icons a img {
 }
 
 /* Adjusted Gallery Container and Images */
-/* Add these new styles */
 .gallery-container {
   position: relative;
 }
@@ -142,10 +140,9 @@ body.light-mode #social-icons a img {
 }
 
 /* Ensuring gallery images are in a single row */
-/* Ensure gallery images are in a single row */
 #gallery {
   display: flex;
-  flex-wrap: nowrap; /* Prevent wrapping to new rows */
+  flex-wrap: nowrap;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Hide scrollbar for Firefox */
@@ -158,7 +155,6 @@ body.light-mode #social-icons a img {
 }
 
 .gallery-container {
-  position: relative;
   flex: 0 0 auto; /* Ensure containers don't wrap */
   width: 100%; /* Ensure each image container takes up 100% width */
 }
@@ -167,18 +163,9 @@ body.light-mode #social-icons a img {
   scroll-snap-align: start;
   width: 100%;
   height: auto;
+  flex: 0 0 auto; /* Ensure images don't wrap */
   object-fit: contain; /* Maintain aspect ratio */
   max-height: 80vh; /* Ensuring it fits within viewport height */
-}
-
-#click-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
 }
 
 /* Adjusted Gallery Thumbnails */
@@ -206,7 +193,6 @@ body.light-mode #social-icons a img {
   transform: scale(1.25); /* Transform scale increased to 1.25 */
   z-index: 3; /* Ensure hovered thumbnails are on top */
 }
-
 
 /* Download Links Section */
 #download-links {
