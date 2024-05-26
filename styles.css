@@ -126,16 +126,26 @@ body.light-mode #social-icons a img {
 }
 
 /* Adjusted Gallery Container and Images */
-#gallery-container {
-  padding-bottom: 10px;
-  width: 100%;
-  overflow: hidden;
+/* Add these new styles */
+.gallery-container {
   position: relative;
 }
 
+#click-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Ensuring gallery images are in a single row */
+/* Ensure gallery images are in a single row */
 #gallery {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* Prevent wrapping to new rows */
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Hide scrollbar for Firefox */
@@ -147,13 +157,28 @@ body.light-mode #social-icons a img {
   display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }
 
+.gallery-container {
+  position: relative;
+  flex: 0 0 auto; /* Ensure containers don't wrap */
+  width: 100%; /* Ensure each image container takes up 100% width */
+}
+
 .gallery-image {
   scroll-snap-align: start;
   width: 100%;
   height: auto;
-  flex: 0 0 auto; /* Ensure images don't wrap */
   object-fit: contain; /* Maintain aspect ratio */
   max-height: 80vh; /* Ensuring it fits within viewport height */
+}
+
+#click-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 
 /* Adjusted Gallery Thumbnails */
@@ -181,6 +206,7 @@ body.light-mode #social-icons a img {
   transform: scale(1.25); /* Transform scale increased to 1.25 */
   z-index: 3; /* Ensure hovered thumbnails are on top */
 }
+
 
 /* Download Links Section */
 #download-links {

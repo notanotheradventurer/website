@@ -53,11 +53,27 @@ function createGallery(galleryImages) {
 
   if (galleryContainer && thumbnailsContainer && !galleryContainer.hasChildNodes() && !thumbnailsContainer.hasChildNodes()) {
     galleryImages.forEach((image, index) => {
+      const imgContainer = document.createElement('div');
+      imgContainer.className = 'gallery-container';
+
       const img = document.createElement('img');
       img.src = image;
       img.alt = `Gallery Image ${index + 1}`;
       img.className = 'gallery-image';
-      galleryContainer.appendChild(img);
+
+      if (index === 0) { // Add overlay only to the first image for demonstration
+        const clickOverlay = document.createElement('img');
+        clickOverlay.src = 'gallery/click.webp';
+        clickOverlay.alt = 'Click Overlay';
+        clickOverlay.id = 'click-overlay';
+        clickOverlay.style.width = '100%';
+        clickOverlay.style.height = '100%';
+        clickOverlay.onclick = () => clickOverlay.style.display = 'none';
+        imgContainer.appendChild(clickOverlay);
+      }
+
+      imgContainer.appendChild(img);
+      galleryContainer.appendChild(imgContainer);
 
       const thumbnail = document.createElement('img');
       thumbnail.src = image;
@@ -85,6 +101,10 @@ function scrollToImage(index) {
     left: imageWidth * index,
     behavior: 'smooth'
   });
+
+  // Hide overlay when scrolling to a specific image
+  const overlay = document.getElementById('click-overlay');
+  if (overlay) overlay.style.display = 'none';
 }
 
 function scrollToNextImage() {
@@ -116,6 +136,7 @@ function scrollToPreviousImage() {
     });
   }
 }
+
 
 function createSocialLinks(socialLinks) {
   const socialIconsContainer = document.getElementById('social-icons');

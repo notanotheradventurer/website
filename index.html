@@ -4,18 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NotAA</title>
-  <!-- Open Graph Metadata -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://notaa.dev">
-  <meta property="og:title" content="Not Another Adventurer (Adult Novel)!">
-  <meta property="og:description" content="Play Online!">
-  <meta property="og:image" content="https://notaa.dev/web_preview.png">
-  
-  <!-- Twitter Card Metadata -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Play Online!">
-  <meta name="twitter:description" content="Explore our interactive greeting and play online!">
-  <meta name="twitter:image" content="https://notaa.dev/web_preview.png">
   <link rel="icon" type="image/x-icon" href="/icon.ico">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
@@ -35,7 +23,7 @@
       </label>
     </div>
   </div>
-  <div class="container">
+  <div class="container" id="container">
     <div id="header" style="max-width: 98%; height: auto; display: flex; justify-content: center; margin: 0 auto 20px auto; align-items: center;">
       <img src="/header.webp" alt="Header Image">
       <a href="https://play.notaa.dev" class="play_button" target="_blank">Play</a>
@@ -102,6 +90,10 @@
         left: imageWidth * index,
         behavior: 'smooth'
       });
+
+      // Hide overlay when scrolling to a specific image
+      const overlay = document.getElementById('click-overlay');
+      if (overlay) overlay.style.display = 'none';
     }
 
     document.getElementById('yes-button').addEventListener('click', setAgeVerified);
@@ -109,4 +101,5 @@
       window.location.href = 'https://www.cisa.gov/news-events/news/keeping-children-safe-online';
     });
   </script>
+</body>
 </html>
