@@ -52,9 +52,9 @@ body.light-mode #header {
 }
 
 #header img {
-  width: 80%; /* Adjusted to 80% of the container width */
+  width: 80%; /* Adjusted to 60% of the container width */
   height: auto;
-  max-width: 800px;
+  max-width: 700px; /* Ensure the image scales down appropriately */
 }
 
 body.light-mode #header img {
@@ -69,12 +69,12 @@ body.light-mode #header img {
   border-radius: 5px;
   transition: background-color 0.3s;
   width: 15%; /* Ensure the button takes up 15% of the width */
-  min-width: 60px; /* Ensure a minimum width for the button */
-  max-width: 120px; /* Ensure a maximum width for the button */
+  min-width: 40px; /* Ensure a minimum width for the button */
+  max-width: 60px; /* Ensure a maximum width for the button */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: auto; /* Ensure a space between the header image and the play button */
+  margin-left: 10px; /* Add some space between the header image and the play button */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
@@ -196,7 +196,7 @@ body.light-mode #social-icons a img {
 
 /* Download Links Section */
 #download-links {
-  margin: 20px auto;
+  margin: 40px auto 20px auto; /* Increase the top margin */
   width: 100%;
   text-align: center;
 }
@@ -284,21 +284,26 @@ body.light-mode .checksum-text {
 /* Footer style */
 footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around; /* Evenly space links across the footer */
   align-items: center;
-  flex-wrap: wrap;
   margin-top: 20px; /* Adjust the margin to ensure even spacing */
   padding-top: 10px; /* Add padding to the top of the footer */
   width: 100%;
-  text-align: center; /* Ensure the text is centered */
   max-width: 800px; /* Ensure the footer doesn't exceed max width */
+  text-align: center; /* Ensure the text is centered */
+  border-top: 1px solid #f0f0f0; /* Add a line above the footer */
+}
+
+body.light-mode footer {
+  border-top: 1px solid #232325;
 }
 
 footer a {
   text-decoration: none;
-  margin: 0 10px;
+  flex: 1; /* Evenly space links */
   white-space: nowrap; /* Prevent links from breaking */
-  font-size: 1rem; /* Adjust font size for smaller screens */
+  font-size: 1.2rem; /* Larger font size for better readability */
+  transition: font-size 0.3s; /* Smooth font-size transition */
 }
 
 footer a:hover {
@@ -468,12 +473,13 @@ body.light-mode .toggle-container .slider {
   }
 
   #header img {
-    width: 90%; /* Adjusted for smaller screens */
+    width: 80%; /* Adjusted for smaller screens */
   }
 
   .play_button {
     font-size: 1rem;
     padding: 5px 8px;
+    max-width: 40px;
   }
 
   .thumbnail {
@@ -496,6 +502,12 @@ body.light-mode .toggle-container .slider {
 
   .popup-buttons button {
     width: 45%; /* Adjusted for smaller screens */
+  }
+
+  footer {
+    flex-direction: row; /* Ensure footer links are in a row */
+    justify-content: space-around; /* Evenly space links */
+    flex-wrap: nowrap; /* Prevent wrapping */
   }
 
   footer a {
